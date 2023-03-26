@@ -18,9 +18,10 @@
 </head>
 <body>
     <div id="app">
+        @auth
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/pois') }}">
                     UP V-Ikot Admin Portal
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -36,7 +37,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
-                        @guest
+                        {{-- @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -66,11 +67,18 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @endguest --}}
+                        <li class="nav-item dropdown">
+                            <form class="inline" method="POST" action="/logout">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        @endauth
 
         <main class="py-4">
             @yield('content')
