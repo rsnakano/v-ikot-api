@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PoiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PoiController::class, 'index'])
+        ->name('poi.index');
+
+Route::get('/pois/{id}/edit', [PoiController::class, 'edit'])
+        ->name('poi.edit');
+
+Route::patch('/pois/{id}', [PoiController::class, 'update'])
+        ->name('poi.update');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

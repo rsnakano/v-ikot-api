@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('pois', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('history');
-            $table->string('courses');
-            $table->string('offices');
+            $table->longText('history');
+            $table->longText('courses');
+            $table->longText('offices');
             $table->float('top', 8, 5);
             $table->float('bottom', 8, 5);
             $table->float('left', 8, 5);
