@@ -14,9 +14,7 @@ class PoiController extends Controller
      */
     public function index()
     {
-        return response()->json([
-            'data' => Poi::all()
-        ], $status  = HttpResponse::HTTP_OK);
+        return Poi::all();
     }
 
     /**
@@ -31,8 +29,6 @@ class PoiController extends Controller
             ], $status = HttpResponse::HTTP_NOT_FOUND);
         }
 
-        return response()->json([
-            'data' => $poi
-        ], $status = HttpResponse::HTTP_OK);
+        return $poi;
     }
 }
